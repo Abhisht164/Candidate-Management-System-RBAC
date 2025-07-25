@@ -4,6 +4,7 @@ import com.learning.candidatemanagementsystem.security.JwtAuthenticationFilter;
 import com.learning.candidatemanagementsystem.security.exception.CustomAccessDeniedHandler;
 import com.learning.candidatemanagementsystem.security.exception.JwtAuthenticationEntryPoint;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import static com.learning.candidatemanagementsystem.constant.RoleType.*;
 
+@Slf4j
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
@@ -48,6 +50,8 @@ public class SecurityConfig {
     }
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+
+        log.info("AuthenticationManager created");
         return authConfig.getAuthenticationManager();
     }
 
