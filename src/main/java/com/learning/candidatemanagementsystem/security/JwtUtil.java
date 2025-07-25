@@ -42,6 +42,7 @@ public class JwtUtil {
     }
 
     public String generateToken(UserDetails userDetails) {
+        log.info("Generating JWT token for user: {}", userDetails.getUsername());
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .claim("roles", userDetails.getAuthorities()
