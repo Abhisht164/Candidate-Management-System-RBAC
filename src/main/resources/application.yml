@@ -1,0 +1,47 @@
+spring:
+    datasource:
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:mem:testDb
+        username: sa
+        password: ""  # Keep as empty string for H2
+    h2:
+        console:
+            enabled: true
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: false
+#    jackson:
+#        date-format: yyyy-MM-dd HH:mm:ss
+#        serialization:
+#            write-dates-as-timestamps: false
+
+logging:
+    level:
+        com.learning: DEBUG                  # Your application-specific logs
+        org.springframework: INFO            # General Spring logs
+        org.hibernate.SQL: WARN              # Avoid printing every SQL
+        org.hibernate.type.descriptor.sql: WARN  # Avoid binding logs
+        org.springframework.web: WARN
+    pattern:
+        console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+jwt:
+    secret: YS1zdHJpbmctc2VjcmV0LWF0LWxlYXN0LTI1Ni1iaXRzLWxvbmc= # Base64-encoded key (valid for HS256)
+    expiry: 3600000  # 1 hour in milliseconds
+
+root:
+    user:
+        name: admin
+        password: admin123
+
+management:
+    info:
+        app:
+            name: Candidate Management System
+            version: 1.0.0
+            description: Candidate management backend APIs
+    endpoints:
+        web:
+            exposure:
+                include: "*"
