@@ -68,7 +68,7 @@ public class AuthController {
             );
             UserDetails userDetails = (UserDetails) auth.getPrincipal();
             String token = jwtUtil.generateToken(userDetails);
-            log.info("Token generated for user: {}", authRequest.getUsername());
+            log.info("Token generated for user: {}", authRequest.getUsername()); //
             return ResponseEntity.ok(new AuthResponseDto(token));
         } catch (BadCredentialsException ex) {
             log.warn("Login failed for user [{}] - Invalid credentials", authRequest.getUsername());
